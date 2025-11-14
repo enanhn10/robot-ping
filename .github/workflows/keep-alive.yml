@@ -1,0 +1,18 @@
+name: ROBOT PING
+
+on:
+  # Zi
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Hi
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping All Servers
+        run: |
+          # Gọi các biến bí mật ra dùng
+          curl -I "${{ secrets.LINK_BACKEND }}"
+          curl -I "${{ secrets.LINK_BACKUP }}"
+          curl -I "${{ secrets.LINK_PROXY }}"
